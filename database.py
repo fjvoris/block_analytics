@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ 
 Author: Aleksandra Sokolowska
 for Validity Labs AG
@@ -12,7 +13,7 @@ import time
 #web3 = Web3(Web3.HTTPProvider("https://mainnet.infura.io/your-personal-number"))
 
 # 2. or connection via local node 
-#web3 = Web3(Web3.IPCProvider('/your-path-to/geth.ipc'))
+web3 = Web3(Web3.IPCProvider('/home/ubuntu/.ethereum/geth.ipc'))
 
 # load a block.
 Nblocks = 10000
@@ -22,7 +23,7 @@ try:
     with open('lastblock.txt', 'r') as f:
         start = int(f.read())+1
 except FileNotFoundError:
-    start = 2000000
+    start = 13000000
 
 #define tables that will go to the SQLite database
 table_quick = []
