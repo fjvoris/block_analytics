@@ -46,7 +46,7 @@ for block in range(start, start+Nblocks):
         tx_data = web3.eth.getTransaction(hashh)
 
 
-        if tx_data['to'] = desired_contract:
+        if tx_data['to'] == desired_contract:
             quick_table, tx_data = order_table_quick(hashh,block, web3)
             table_quick.append(quick_table)
 
