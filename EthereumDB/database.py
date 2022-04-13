@@ -39,7 +39,6 @@ for block in range(start, start+Nblocks):
     block_table, block_data = order_table_block(block,web3)
     #list of block data that will go to the DB
     table_block.append(block_table)
-    print("After Block")
     #all transactions on the block
     for hashh in block_data['transactions']:
         #print(web3.toHex(hashh))
@@ -54,7 +53,6 @@ for block in range(start, start+Nblocks):
             TX_table = order_table_tx(tx_data,hashh, web3)
             table_tx.append(TX_table)
     count = count + 1
-    print("After Txn")
     #print(count)
     #dump output every 2 blocks
     if (count % output_every) == 0:
@@ -75,5 +73,5 @@ for block in range(start, start+Nblocks):
         end = time.time()
         with open('timeperXblocks.txt', 'a') as f:
             f.write("%d %f \n" % (block, end-start_time))
-    if (count % 100) == 0:
-        print("100 new blocks completed.")
+    if (count % 1000) == 0:
+        print("1000 new blocks completed.")
