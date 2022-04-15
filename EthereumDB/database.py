@@ -18,7 +18,6 @@ web3 = Web3(Web3.IPCProvider('/home/ubuntu/.ethereum/geth.ipc'))
 desired_contract = '0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6'
 
 # load a block.
-Nblocks = web3.eth.blockNumber - 14402855
 output_every = 2
 start_time = time.time()
 try:
@@ -26,6 +25,8 @@ try:
         start = int(f.read())+1
 except FileNotFoundError:
     start = 14402855
+
+Nblocks = web3.eth.blockNumber - start
 
 #define tables that will go to the SQLite database
 table_quick = []
@@ -73,5 +74,6 @@ for block in range(start, start+Nblocks):
         end = time.time()
         with open('timeperXblocks.txt', 'a') as f:
             f.write("%d %f \n" % (block, end-start_time))
-    if (count % 1000) == 0:
-        print("1000 new blocks completed.")
+    if (count % 100) == 0:
+        print("100 new blocks completed.")
+        print("Blocks remaining: " + ((start + Nblocks) - block))
