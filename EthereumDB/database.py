@@ -76,4 +76,4 @@ for block in range(start, start+Nblocks):
             f.write("%d %f \n" % (block, end-start_time))
     if (count % 100) == 0:
         print("100 new blocks completed.")
-        print("Blocks remaining: " + ((start + Nblocks) - block))
+        print("Blocks remaining: " + str(((start + Nblocks) - block)))
